@@ -24,8 +24,7 @@ class SignInPage extends StatelessWidget {
           );
         } else if (state is UserUnAuthenticated) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Неверный логин или пароль')),
-          );
+              SnackBar(content: Text('Неверный логин или пароль')));
         }
       },
       child: Scaffold(
