@@ -1,8 +1,9 @@
+import 'package:authorization_app/core/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:authorization_app/bloc/sign_in_bloc.dart';
-import 'package:authorization_app/pages/home_page.dart';
-import 'package:authorization_app/repository/user.dart';
+import 'package:authorization_app/features/auth/domain/bloc/sign_in_bloc.dart';
+import 'package:authorization_app/features/home/ui/home_page.dart';
+import 'package:authorization_app/features/auth/data/repository/user.dart';
 
 class SignInPage extends StatelessWidget {
   final TextEditingController _loginController = TextEditingController();
@@ -12,6 +13,7 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var loc = AppLocalizations.of(context)!;
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state is UserAuthenticated) {
@@ -23,8 +25,8 @@ class SignInPage extends StatelessWidget {
                     )),
           );
         } else if (state is UserUnAuthenticated) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Неверный логин или пароль')));
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(loc.titleIncorrect)));
         }
       },
       child: Scaffold(
@@ -32,7 +34,7 @@ class SignInPage extends StatelessWidget {
           backgroundColor: Colors.black,
           title: Center(
             child: Text(
-              'Авторизация',
+              loc.titleAuth,
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -49,7 +51,7 @@ class SignInPage extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    labelText: 'Логин',
+                    labelText: loc.titleLogin,
                   ),
                 ),
                 SizedBox(height: 40),
@@ -59,7 +61,7 @@ class SignInPage extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    labelText: 'Пароль',
+                    labelText: loc.titlePassword,
                   ),
                   obscureText: true,
                 ),
@@ -72,7 +74,7 @@ class SignInPage extends StatelessWidget {
                         .read<SignInBloc>()
                         .add(SignInLogin(login, password));
                   },
-                  child: Text('Войти'),
+                  child: Text(loc.titleLoginButton),
                 ),
               ],
             ),

@@ -1,0 +1,10 @@
+{
+    "titleHello": "Привет",
+    "titleAuth": "Авторизация",
+    "titleLogin": "Логин",
+    "titlePassword": "Пароль",
+    "titleIncorrect": "Неверный логин или пароль",
+    "titleHomePage": "Главная страница",
+    "titleLoginButton": "Войти",
+    "titleLogoutButton": "Выйти"
+}

@@ -1,11 +1,13 @@
+import 'package:authorization_app/core/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:authorization_app/bloc/sign_in_bloc.dart';
-import 'package:authorization_app/pages/home_page.dart';
-import 'package:authorization_app/repository/user.dart';
+import 'package:authorization_app/features/auth/domain/bloc/sign_in_bloc.dart';
+import 'package:authorization_app/features/home/ui/home_page.dart';
+import 'package:authorization_app/features/auth/data/repository/user.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart';
 import 'package:flutter/services.dart';
-import 'package:authorization_app/widgets/rive_animated_widget.dart';
+import 'package:authorization_app/core/widgets/rive_animated_widget.dart';
 
 class RiveLoginPage extends StatefulWidget {
   RiveLoginPage({super.key});
@@ -28,6 +30,8 @@ class _RiveLoginPageState extends State<RiveLoginPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    var loc = AppLocalizations.of(context)!;
+
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state is UserAuthenticated) {
@@ -49,8 +53,12 @@ class _RiveLoginPageState extends State<RiveLoginPage> {
                 backgroundColor: Color(0xff9b2059),
                 content: Center(
                     child: Text(
-                  'Неверный логин или пароль',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  loc.titleIncorrect,
+                  style: GoogleFonts.jetBrainsMono(
+                    color: Colors.black87,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ))),
           );
         }
@@ -61,8 +69,12 @@ class _RiveLoginPageState extends State<RiveLoginPage> {
           backgroundColor: Color(0xff9b2059),
           title: Center(
             child: Text(
-              'Авторизация',
-              style: TextStyle(color: Colors.black, fontSize: 25),
+              loc.titleAuth,
+              style: GoogleFonts.jetBrainsMono(
+                color: Colors.black87,
+                fontSize: 25,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ),
@@ -126,8 +138,9 @@ class _RiveLoginPageState extends State<RiveLoginPage> {
                       borderSide:
                           BorderSide(color: Color(0xff9b2059), width: 2),
                     ),
-                    labelText: 'Логин',
-                    labelStyle: TextStyle(color: Color(0xff9b2059)),
+                    labelText: loc.titleLogin,
+                    labelStyle:
+                        GoogleFonts.jetBrainsMono(color: Color(0xff9b2059)),
                   ),
                 ),
                 SizedBox(height: 20),
@@ -151,15 +164,16 @@ class _RiveLoginPageState extends State<RiveLoginPage> {
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30)),
-                      borderSide: BorderSide(color: Colors.black, width: 2),
+                      borderSide: BorderSide(color: Colors.black87, width: 2),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30)),
                       borderSide:
                           BorderSide(color: Color(0xff9b2059), width: 2),
                     ),
-                    labelText: 'Пароль',
-                    labelStyle: TextStyle(color: Color(0xff9b2059)),
+                    labelText: loc.titlePassword,
+                    labelStyle:
+                        GoogleFonts.jetBrainsMono(color: Color(0xff9b2059)),
                   ),
                 ),
                 SizedBox(height: 20),
@@ -167,9 +181,9 @@ class _RiveLoginPageState extends State<RiveLoginPage> {
                   style: OutlinedButton.styleFrom(
                     fixedSize: Size(120, 50),
                     backgroundColor: Color(0xff9b2059),
-                    foregroundColor: Colors.black,
+                    foregroundColor: Colors.black87,
                     side: BorderSide(
-                      color: Colors.black,
+                      color: Colors.black87,
                       width: 2,
                     ),
                   ),
@@ -181,8 +195,11 @@ class _RiveLoginPageState extends State<RiveLoginPage> {
                         .add(SignInLogin(login, password));
                   },
                   child: Text(
-                    'Войти',
-                    style: TextStyle(fontSize: 16),
+                    loc.titleLoginButton,
+                    style: GoogleFonts.jetBrainsMono(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ],

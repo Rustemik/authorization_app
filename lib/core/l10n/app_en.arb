@@ -1,0 +1,10 @@
+{
+    "titleHello": "Hello",
+    "titleAuth": "Authorization",
+    "titleLogin": "Login",
+    "titlePassword": "Password",
+    "titleIncorrect": "Incorrect login or password",
+    "titleHomePage": "Home Page",
+    "titleLoginButton": "Login",
+    "titleLogoutButton": "Logout"
+}

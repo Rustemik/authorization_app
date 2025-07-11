@@ -1,5 +1,5 @@
-import 'package:authorization_app/repository/i_users_repository.dart';
-import 'package:authorization_app/repository/user.dart';
+import 'package:authorization_app/features/auth/domain/interfaces/i_users_repository.dart';
+import 'package:authorization_app/features/auth/data/repository/user.dart';
 
 class UsersRepository implements IUsersRepository {
   @override

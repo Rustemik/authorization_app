@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:authorization_app/repository/users_repository.dart';
+import 'package:authorization_app/features/auth/data/repository/users_repository.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
